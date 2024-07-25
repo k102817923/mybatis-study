@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 绑定一个对应的Dao/Mapper接口 -->
+<mapper namespace="com.mybatis.dao.UserDao">
+    <select id="getUserList" resultType="com.mybatis.pojo.User">
+        select * from user
+    </select>
+
+    <select id="getUserById" parameterType="int" resultType="com.mybatis.pojo.User">
+        select * from user where id = #{id}
+    </select>
+
+    <!-- 对象中的属性可以直接取出来 -->
+    <insert id="create" parameterType="com.mybatis.pojo.User">
+        insert into user (id, name, pwd) values (#{id}, #{name}, #{pwd})
+    </insert>
+
+    <update id="update" parameterType="com.mybatis.pojo.User">
+        update user set name = #{name}, pwd = #{pwd} where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from user where id = #{id}
+    </delete>
+
+    <!-- 在接口方法的参数前加 @Param 属性，Sql 编写时就可直接取 @Param 中设置的值，无需再单独设置参数类型-->
+    <select id="getUserByNameAndPwd" resultType="com.mybatis.pojo.User">
+        select * from user where name = #{name} and pwd = #{pwd}
+    </select>
+
+    <select id="getUserByNameAndPwdV2" parameterType="map" resultType="com.mybatis.pojo.User">
+        select * from user where name = #{name} and pwd = #{pwd}
+    </select>
+
+    <select id="getUserByKeyword" resultType="com.mybatis.pojo.User">
+        select * from user where name like #{name}
+    </select>
+</mapper>
