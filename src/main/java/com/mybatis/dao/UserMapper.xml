@@ -5,20 +5,35 @@
 
 <!-- 绑定一个对应的Dao/Mapper接口 -->
 <mapper namespace="com.mybatis.dao.UserDao">
-    <select id="getUserList" resultType="com.mybatis.pojo.User">
+    <select id="getUserList" resultType="User">
         select * from user
     </select>
 
-    <select id="getUserById" parameterType="int" resultType="com.mybatis.pojo.User">
+    <!-- 结果集映射 -->
+    <resultMap id="UserMap" type="User">
+        <!-- ID 主键 -->
+        <!-- column 是数据库表的字段名，property 是对应实体类的属性名 -->
+        <!-- 可以仅设置需要起别名的字段 -->
+<!--        <id column="id" property="id"/>-->
+<!--        <result column="name" property="name"/>-->
+        <!-- 假设数据库中是 pwd，实体类中是 password -->
+        <result column="pwd" property="password"/>
+    </resultMap>
+
+<!--    <select id="getUserById" resultMap="UserMap">-->
+<!--        select * from user where id = #{id}-->
+<!--    </select>-->
+
+    <select id="getUserById" parameterType="int" resultType="User">
         select * from user where id = #{id}
     </select>
 
     <!-- 对象中的属性可以直接取出来 -->
-    <insert id="create" parameterType="com.mybatis.pojo.User">
+    <insert id="create" parameterType="User">
         insert into user (id, name, pwd) values (#{id}, #{name}, #{pwd})
     </insert>
 
-    <update id="update" parameterType="com.mybatis.pojo.User">
+    <update id="update" parameterType="User">
         update user set name = #{name}, pwd = #{pwd} where id = #{id}
     </update>
 
@@ -27,15 +42,19 @@
     </delete>
 
     <!-- 在接口方法的参数前加 @Param 属性，Sql 编写时就可直接取 @Param 中设置的值，无需再单独设置参数类型-->
-    <select id="getUserByNameAndPwd" resultType="com.mybatis.pojo.User">
+    <select id="getUserByNameAndPwd" resultType="User">
         select * from user where name = #{name} and pwd = #{pwd}
     </select>
 
-    <select id="getUserByNameAndPwdV2" parameterType="map" resultType="com.mybatis.pojo.User">
+    <select id="getUserByNameAndPwdV2" parameterType="map" resultType="User">
         select * from user where name = #{name} and pwd = #{pwd}
     </select>
 
-    <select id="getUserByKeyword" resultType="com.mybatis.pojo.User">
+    <select id="getUserByKeyword" resultType="User">
         select * from user where name like #{name}
+    </select>
+
+    <select id="getUserListByLimit" parameterType="map" resultType="User">
+        select * from user limit #{startIndex}, #{pageSize}
     </select>
 </mapper>

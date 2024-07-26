@@ -1,6 +1,9 @@
 package com.mybatis.pojo;
 
+import org.apache.ibatis.type.Alias;
+
 // 实体类
+@Alias("User")
 public class User {
     private int id;
     private String name;

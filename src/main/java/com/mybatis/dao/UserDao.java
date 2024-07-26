@@ -30,4 +30,7 @@ public interface UserDao {
 
     // 根据名称模糊查询用户
     List<User> getUserByKeyword(String keyword);
+
+    // 分页查询用户
+    List<User> getUserListByLimit(Map<String, Integer> map);
 }

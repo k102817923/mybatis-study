@@ -3,6 +3,7 @@ package com.mybatis.dao;
 import com.mybatis.pojo.User;
 import com.mybatis.util.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -10,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 
 public class UserDaoTest {
+    static Logger logger = Logger.getLogger(UserDaoTest.class);
+
     @Test
     public void test() {
         // 获取 SqlSession 对象
@@ -152,6 +155,34 @@ public class UserDaoTest {
                 System.out.println(user);
             }
             sqlSession.commit();
+        } finally {
+            // 关闭 SqlSession
+            sqlSession.close();
+        }
+    }
+
+    @Test
+    public void testLog4J() {
+        logger.info("info 方法");
+        logger.debug("debug 方法");
+        logger.error("error 方法");
+    }
+
+    @Test
+    public void getUserListByLimit() {
+        // 获取 SqlSession 对象
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+
+        try {
+            // 执行 SQL
+            UserDao userDao = sqlSession.getMapper(UserDao.class);
+            Map<String, Integer> map = new HashMap<String, Integer>();
+            map.put("startIndex", 0);
+            map.put("pageSize", 2);
+            List<User> userList = userDao.getUserListByLimit(map);
+            for (User user : userList) {
+                System.out.println(user);
+            }
         } finally {
             // 关闭 SqlSession
             sqlSession.close();
