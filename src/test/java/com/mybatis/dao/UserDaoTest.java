@@ -188,4 +188,23 @@ public class UserDaoTest {
             sqlSession.close();
         }
     }
+
+    @Test
+    public void getAllUsers() {
+        // 获取 SqlSession 对象
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+
+        try {
+            // 执行 SQL
+            // 本质上利用了 jvm 的动态代理机制
+            UserDao userDao = sqlSession.getMapper(UserDao.class);
+            List<User> userList = userDao.getAllUsers();
+            for (User user : userList) {
+                System.out.println(user);
+            }
+        } finally {
+            // 关闭 SqlSession
+            sqlSession.close();
+        }
+    }
 }

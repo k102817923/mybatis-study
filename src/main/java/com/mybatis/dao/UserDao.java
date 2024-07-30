@@ -2,6 +2,7 @@ package com.mybatis.dao;
 
 import com.mybatis.pojo.User;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 import java.util.Map;
@@ -33,4 +34,8 @@ public interface UserDao {
 
     // 分页查询用户
     List<User> getUserListByLimit(Map<String, Integer> map);
+
+    // 查询所有用户
+    @Select("select * from user")
+    List<User> getAllUsers();
 }

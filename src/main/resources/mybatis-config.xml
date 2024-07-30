@@ -16,6 +16,8 @@
         <!-- 标准的日志工厂形式 -->
 <!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
         <setting name="logImpl" value="LOG4J"/>
+        <!-- 下划线驼峰自动转换 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     <!-- 类型别名 -->
     <typeAliases>
@@ -37,6 +39,12 @@
     </environments>
     <!-- 每一个 Mapper.xml 都需要在 Mybatis 核心配置文件中注册 -->
     <mappers>
-        <mapper resource="com/mybatis/dao/userMapper.xml"/>
+        <!-- 使用相对于类路径的资源引用 -->
+<!--        <mapper resource="com/mybatis/dao/userMapper.xml"/>-->
+        <!-- 使用注解简单开发，绑定接口 -->
+<!--        <mapper class="com.mybatis.dao.UserDao"/>-->
+        <!-- 将包内的映射器接口实现全部注册为映射器 -->
+<!--        <mapper resource="com/mybatis/dao/*.xml"/>-->
+        <package name="com.mybatis.dao"/>
     </mappers>
 </configuration>
