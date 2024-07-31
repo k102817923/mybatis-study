@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 绑定一个对应的Dao/Mapper接口 -->
-<mapper namespace="com.mybatis.dao.UserDao">
+<mapper namespace="com.mybatis.dao.UserMapper">
     <select id="getUserList" resultType="User">
         select * from user
     </select>
@@ -57,4 +57,9 @@
     <select id="getUserListByLimit" parameterType="map" resultType="User">
         select * from user limit #{startIndex}, #{pageSize}
     </select>
+
+    <!-- 创建了一个 FIFO 缓存，每隔 60 秒刷新，最多可以存储结果对象或列表的 512 个引用，而且返回的对象被认为是只读的，因此对它们进行修改可能会在不同线程中的调用者产生冲突 -->
+<!--    <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>-->
+    <!-- 使用第三方缓存 -->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
 </mapper>

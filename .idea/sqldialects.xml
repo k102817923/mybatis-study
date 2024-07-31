@@ -2,7 +2,7 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/src/main/java/com/mybatis/dao/TeacherMapper.java" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/mybatis/dao/UserDao.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/mybatis/dao/UserMapper.java" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/main/resources/com/mybatis/dao/BlogMapper.xml" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/main/resources/com/mybatis/dao/StudentMapper.xml" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/main/resources/com/mybatis/dao/TeacherMapper.xml" dialect="MySQL" />

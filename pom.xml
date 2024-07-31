@@ -44,6 +44,12 @@
       <version>1.18.24</version>
       <scope>provided</scope>
     </dependency>
+    <!-- java 分布式缓存 -->
+    <dependency>
+      <groupId>org.mybatis.caches</groupId>
+      <artifactId>mybatis-ehcache</artifactId>
+      <version>1.1.0</version>
+    </dependency>
   </dependencies>
 
   <build>
