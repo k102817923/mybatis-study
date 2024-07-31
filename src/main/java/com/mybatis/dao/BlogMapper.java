@@ -11,4 +11,7 @@ public interface BlogMapper {
 
     // 查询博客
     List<Blog> queryByIF(Map<String, Object> map);
+
+    // 查询博客
+    List<Blog> queryByForEach(Map<String, Object> map);
 }

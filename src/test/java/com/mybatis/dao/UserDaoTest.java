@@ -129,7 +129,7 @@ public class UserDaoTest {
         try {
             // 执行 SQL
             UserDao userDao = sqlSession.getMapper(UserDao.class);
-            Map<String, Object> map = new HashMap<String, Object>();
+            Map<String, Object> map = new HashMap<>();
             map.put("name", "张三");
             map.put("pwd", "abcdef");
             User user = userDao.getUserByNameAndPwdV2(map);
