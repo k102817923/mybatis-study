@@ -176,7 +176,7 @@ public class UserDaoTest {
         try {
             // 执行 SQL
             UserDao userDao = sqlSession.getMapper(UserDao.class);
-            Map<String, Integer> map = new HashMap<String, Integer>();
+            Map<String, Integer> map = new HashMap<>();
             map.put("startIndex", 0);
             map.put("pageSize", 2);
             List<User> userList = userDao.getUserListByLimit(map);

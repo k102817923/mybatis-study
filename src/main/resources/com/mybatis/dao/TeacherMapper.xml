@@ -31,11 +31,14 @@
     </resultMap>
 
     <select id="getTeacher3" resultMap="TeacherStudent2">
-        select
-            s.id sid, s.name sname, t.id tid, t.name tname
-        from
-            student s, teacher t
-        where
-            s.tid = t.id and t.id = #{id}
+        select s.id   sid,
+               s.name sname,
+               t.id,
+               tid,
+               t.name tname
+        from student s,
+             teacher t
+        where s.tid = t.id
+          and t.id = #{id}
     </select>
 </mapper>

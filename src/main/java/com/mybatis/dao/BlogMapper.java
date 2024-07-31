@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface BlogMapper {
     // 添加博客
-    int create(Blog blog);
+    void create(Blog blog);
 
     // 查询博客
     List<Blog> queryByIF(Map<String, Object> map);

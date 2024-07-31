@@ -21,7 +21,7 @@
         select * from blog
         <where>
             <!-- 引用 sql 片段，如果 refid 指定的对象不在本文件中，需要在前面加上 namespace -->
-            <include refid="if-title-author"></include>
+            <include refid="if-title-author"/>
         </where>
 
 <!--        <choose>-->
