@@ -139,7 +139,7 @@ public class SDKTest {
         FunctionConfiguration configuration2 = new FunctionConfiguration();
         configuration2.setSupportIRLiveness(true);
         errorCode = faceEngine.processIr(imageInfoGray.getImageData(), imageInfoGray.getWidth(), imageInfoGray.getHeight(), imageInfoGray.getImageFormat(), faceInfoListGray, configuration2);
-        //IR活体检测
+        // IR活体检测
         List<IrLivenessInfo> irLivenessInfo = new ArrayList<>();
         errorCode = faceEngine.getLivenessIr(irLivenessInfo);
         System.out.println("IR活体：" + irLivenessInfo.get(0).getLiveness());
